@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Happy Birthday, UCode!</title>
+	<style type="text/css">
+		@font-face {
+		    font-family: ucode-bold;
+		    src: url(ArticulatCF-Bold_C.otf);
+		    font-weight:600;
+		}
+
+		@font-face {
+		    font-family: ucode;
+		    src: url(ArticulatCF-Light_C.otf);
+		    font-weight:400;
+		}
+
+		body {
+			background: #191F6C;
+			font-family: ucode;
+		}
+		h1, h2 {
+			font-family: ucode-bold;
+		}
+		ol {
+			text-align: left;
+			margin-inline-start: 30%;
+		}
+		li xmp {
+			display: inline;
+			margin-left: 10px;
+			background-color: black;
+			color: #00FF00;
+			padding: 5px;
+		}
+		.logo {
+			background: white; z-index: 100; border: 4px solid #191F6C; border-radius: 50%; position: fixed; top: 5px; left: 5px;
+		}
+		.pa {
+			position: fixed;
+			bottom: 6%;
+			right: 6%;
+			z-index: 100;
+			width: 20%;
+			background: white;
+		}
+		section {
+			opacity: 0;
+			position: absolute;
+			top: 5%;
+			bottom: 5%;
+			right: 5%;
+			left: 5%;
+			margin: auto;
+			display: block;
+			transition: opacity 0.5s;
+			padding: 2% 8% 5% 8%;
+			text-align: center;
+			overflow-x: visible;
+			overflow-y: scroll;
+			background: white;
+		}
+		h1 {
+			font-size: 40px;
+			color: #FA6B01;
+		}
+		button {
+			position: fixed;
+			font-size: 22px;
+			font-family: ucode-bold;
+			background-color: #FA6B01;
+			color: white;
+			display: block;
+			z-index: 500;
+			border-radius: 100px;
+			transition: all 0.3s ease-out;
+			transform: translate3d(0,0,0.1);
+			opacity: 1 !important;
+		}
+		button:active, button:focus {
+			outline: none;
+		}
+		button:hover {
+			cursor: pointer;
+		}
+		button.start {
+			position: relative;
+			margin: 30px auto;
+			padding: 10px 20px;
+		}
+		.start:hover {
+			background-color: #ffb100;
+		}
+		button.next{
+			right: 1%;
+			width: 100px;
+			border-radius: 25px;
+			bottom: 50%;
+			font-size: 14px;
+		}
+		button.back{
+			left: 1%;
+			bottom: 50%;
+			width: 100px;
+			border-radius: 25px;
+			font-size: 14px;
+		}
+
+		.circle {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background-color: #03A9F4;
+			display: inline-block;
+			margin: 10px;
+		}
+
+		.border-dotted {
+			border: 6px dotted #ffb100;
+			width: 90px;
+			height: 90px;
+			animation: rotate 5s linear infinite;
+		}
+
+		.triangle-up {
+		  width: 0;
+		  height: 0;
+		  border-left: 50px solid transparent;
+		  border-right: 50px solid transparent;
+		  border-bottom: 100px solid #03A9F4;
+		  display: inline-block;
+		}
+
+		.triangle-down {
+		  width: 0;
+		  height: 0;
+		  border-left: 50px solid transparent;
+		  border-right: 50px solid transparent;
+		  border-top: 100px solid #ffb100;
+		  display: inline-block;
+		}
+		.left {
+		  width: 0;
+		  height: 0;
+		  border-bottom: 40px solid transparent;
+		  border-right: 70px solid #ffb100;
+		  border-top: 40px solid transparent;
+		  border-left: 0px solid transparent;
+		  display: inline-block;
+		  bottom: 50%;
+		  left: 0;
+		  border-radius: 0;
+		  background: transparent;
+		}
+
+		.left:after {
+		  position: absolute;
+		  right: -65px;
+		  top: -10px;
+		  font-size: 16px;
+		  text-transform: uppercase;
+		  letter-spacing: 1px;
+		  content: "back";
+		}
+		.right {
+		  width: 0;
+		  height: 0;
+		  border-bottom: 40px solid transparent;
+		  border-left: 70px solid #ffb100;
+		  border-top: 40px solid transparent;
+		  border-right: 0px solid transparent;
+		  display: inline-block;
+		  bottom: 50%;
+		  right: 0;
+		  border-radius: 0;
+		  background: transparent;
+		}
+
+		.right:after {
+		  position: absolute;
+		  left: -65px;
+		  top: -10px;
+		  font-size: 16px;
+		  text-transform: uppercase;
+		  letter-spacing: 1px;
+		  content: "next";
+		}
+
+		.right:hover {
+			border-left-color: #FA6B01;
+		}
+		.left:hover {
+			border-right-color: #FA6B01;
+		}
+		.triangle-topright {
+	      width: 0;
+	      height: 0;
+	      border-top: 100px solid #03A9F4;
+	      border-left: 100px solid transparent;
+		  display: inline-block;
+		 }
+		 .trapezoid {
+	       border-bottom: 100px solid #03A9F4;
+	       border-left: 25px solid transparent;
+	       border-right: 25px solid transparent;
+	       height: 0;
+	       width: 100px;
+		   display: inline-block;
+		 }
+		   
+		.box {
+			position: relative; height: 500px; width: 200px; margin: 0 auto;
+		}
+
+		.star-six {
+		  width: 0;
+		  height: 0;
+		  border-left: 50px solid transparent;
+		  border-right: 50px solid transparent;
+		  border-bottom: 100px solid #03A9F4;
+		  position: relative;
+		  display: inline-block;
+		  margin-bottom: 20px;
+		}
+		.star-six:after {
+		  width: 0;
+		  height: 0;
+		  border-left: 50px solid transparent;
+		  border-right: 50px solid transparent;
+		  border-top: 100px solid #03A9F4;
+		  position: absolute;
+		  content: "";
+		  top: 30px;
+		  left: -50px;
+		}
+
+		.heart {
+		  position: relative;
+		  width: 100px;
+		  height: 90px;
+		  display: inline-block;
+		  animation: throb 2s ease-in-out infinite;
+		}
+		.heart:before,
+		.heart:after {
+		  position: absolute;
+		  content: "";
+		  left: 50px;
+		  top: 0;
+		  width: 50px;
+		  height: 80px;
+		  background: #03A9F4;
+		  border-radius: 50px 50px 0 0;
+		  transform: rotate(-45deg);
+		  transform-origin: 0 100%;
+		}
+		.heart:after {
+		  left: 0;
+		  transform: rotate(45deg);
+		  transform-origin: 100% 100%;
+		}
+
+		.oval {
+			width: 200px; height: 40px; background-color: peachpuff; position: absolute; top: 120px; left: 0; border-radius: 50%;
+			animation: oval 5s ease-in infinite, bake 5s ease-out infinite;
+		}
+		.rect {
+			width: 200px; height: 40px; background-color: peachpuff; position: absolute; top: 60px; left: 0;
+			animation: rect 5s ease-in infinite, bake 5s ease-out infinite;
+		}
+		.box .oval:last-child {
+			top: 0;
+			animation: none;
+		}
+		.sprinkles {
+			background-image: url(sprinkles.png);
+			background-size: 200px;
+		}
+		.gradient {
+			background: radial-gradient(#03A9F4, #191F6C);
+		}
+
+        .examples {
+        	width: 400px;
+        	display: inline-block;
+        }
+		@keyframes rect {
+			50% {
+				top: 20px;
+			}
+			100% {
+				top: 20px;
+			}
+		}
+
+		@keyframes oval {
+			50% {
+				top: 40px;
+			}
+			100% {
+				top: 40px;
+			}
+		}
+
+		@keyframes bake {
+			50% {
+				background-color: tan;
+			}
+			100% {
+				background-color: tan;
+			}	
+		}
+		@keyframes throb {
+			to {
+				transform: scale(1.1);
+			}
+		}
+		@keyframes rotate {
+			to {
+				transform: rotate(180deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- background -->
+ 	<section style="opacity: 1;"></section>
+	<img src="ucode_avatar.png" class="logo">
+	<img src="programming_academy_sm.png" class="pa">
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="7">
+		<h1>Submission will open March 12th!</h1>
+		<h2>Keep decorating!!!</h2>
+
+		<button class="left" onclick="fade(7,6)"></button>
+	
+	</section>
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="6">
+		<h1>Cascading Cake Challenge</h1>
+		<h2>Get Inspired!</h2>
+		<div class="example">
+			<p class="codepen" data-height="400" data-theme-id="light" data-default-tab="result" data-user="teamturret" data-slug-hash="qbbeor" style="height: 400px; width: 300px !important; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="CSS Cake - Happy Birthday !!!">
+			  <span>See the Pen <a href="https://codepen.io/teamturret/pen/qbbeor/">
+			  CSS Cake - Happy Birthday !!!</a> by Turret [http://turret.in] (<a href="https://codepen.io/teamturret">@teamturret</a>)
+			  on <a href="https://codepen.io">CodePen</a>.</span>
+			</p>
+			<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+		</div>
+		<div class="example">
+			<p class="codepen" data-height="400" data-theme-id="light" data-default-tab="result" data-user="jaicab" data-slug-hash="ohbdJ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Pure CSS birthday cake">
+			  <span>See the Pen <a href="https://codepen.io/jaicab/pen/ohbdJ/">
+			  Pure CSS birthday cake</a> by Jaime Caballero (<a href="https://codepen.io/jaicab">@jaicab</a>)
+			  on <a href="https://codepen.io">CodePen</a>.</span>
+			</p>
+			<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+		</div>
+		<div class="example">
+			<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="Sheary" data-slug-hash="bYExVQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="#codevember 02 CSS Cake">
+			  <span>See the Pen <a href="https://codepen.io/Sheary/pen/bYExVQ/">
+			  #codevember 02 CSS Cake</a> by Sheary  (<a href="https://codepen.io/Sheary">@Sheary</a>)
+			  on <a href="https://codepen.io">CodePen</a>.</span>
+			</p>
+			<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+		</div>
+		<div class="example">
+			<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="saawsan" data-slug-hash="QMgWab" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="Day #10 : Who stole the cake? - August CSS Project">
+			<span>See the Pen <a href="https://codepen.io/saawsan/pen/QMgWab/">
+			Day #10 : Who stole the cake? - August CSS Project</a> by Sawsan (<a href="https://codepen.io/saawsan">@saawsan</a>)
+			on <a href="https://codepen.io">CodePen</a>.</span>
+			</p>
+			<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+		</div>
+</iframe>
+	</section>
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="5">
+		<h1>Cascading Cake Challenge</h1>
+		<h2>Instructional Guide - Step 4</h2>
+		<p>What other shapes can you make? How can you combine them to make new shapes?</p>
+		<p>What other CSS properties you can use to decorate?</p>
+
+		<div class="examples">
+			<div class="circle"></div> 
+			<div class="circle border-dotted"></div>
+			<div class="circle gradient"></div>
+			<div class="circle sprinkles"></div> 
+			<div class="triangle-up"></div>
+			<div class="triangle-topright"></div>
+			<div class="trapezoid"></div>
+			<div class="star-six"></div>
+			<div class="heart"></div>
+		</div>
+
+		<p>Get more ideas HERE: <a href="https://css-tricks.com/the-shapes-of-css/">https://css-tricks.com/the-shapes-of-css</a></p>
+	</section>
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="4">
+		<h1>Cascading Cake Challenge</h1>
+		<h2>Instructional Guide - Step 3</h2>
+		<h2>Combing Shapes</h2>
+		<p>Combining two ovals and one rectangle, we can create the foundation of our cake!</p>
+		<div class="box">
+			<div class="oval"></div> 
+			<div class="rect"></div> 
+			<div class="oval"></div> 
+		</div>
+	</section>
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="3">
+		<h1>Cascading Cake Challenge</h1>
+		<h2>Instructional Guide - Step 2</h2>
+		<h2>Making an Oval</h2>
+		<p>Can you turn this rectangle into a oval by adding the border-radius property?</p>
+		<h3>In your HTML file, create a tag and style it to have the following properties:</h3>
+		<ol>
+			<li><xmp>border-radius: 50%</xmp></li>
+		</ol>
+		<p>You should end up with something that looks like this:</p>
+		<div style="position: relative; height: 50px; width: 200px; margin: 0 auto;">
+			<div style="width: 200px; height: 40px; background-color: peachpuff; position: absolute; top: 0; left: 0; border-radius: 50%;"></div> 
+		</div>
+	</section>
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="2">
+		<h1>Cascading Cake Challenge</h1>
+		<h2>Instructional Guide - Step 1</h2>
+		<h2>Making a Rectangle</h2>
+		<p>You may need to learn some new CSS properties to help create your cake. Can you start by making a rectangle?</p>
+		<h3>In your HTML file, create a tag and style it to have the following properties:</h3>
+		<ol>
+			<li><xmp>width: 300px;</xmp></li>
+			<li><xmp>height: 70px;</xmp></li>
+			<li><xmp>background-color: peachpuff;</xmp></li>
+			<li><xmp>position: absolute;</xmp></li>
+			<li><xmp>top: 0;</xmp></li>
+			<li><xmp>left: 0;</xmp></li>
+		</ol>
+		<p>You should end up with something that looks like this:</p>
+		<div style="position: relative; height: 50px; width: 200px; margin: 0 auto;">
+			<div style="width: 200px; height: 40px; background-color: peachpuff; position: absolute; top: 0; left: 0"></div>  
+		</div>
+	</section>
+	
+	<!-- 	NEW SECTION  -->
+
+ 	<section id="1">
+		<h1>Happy Birthday, UCode!!!</h1>
+		<h2>Let's Celebrate with a Challenge!</h2>
+		<h3>Your Goal: Bake us a CSS CAKE!</h3>
+		<p>Using only HTML and CSS, bake us the best cake.</p>
+		<p>Most delicous cakes will be entered for a chance to win 5,000 UCoins!!!</p>
+	</section>
+
+
+	<button class="left" onclick="back()"></button>
+	<button class="right" onclick="next()"></button>
+
+
+	<!-- javascript -->
+
+	<script type="text/javascript">
+		var sections = document.querySelectorAll('section');
+		var position = 0;
+
+
+		function next() {
+		 	if (position > 0) {
+		 		document.getElementById(position).style.display = "none";
+				setTimeout(function() { document.getElementById(position).style.opacity = 0; }, 100);	
+			}		
+		 	if (position < 7) { position++ };
+		 	document.getElementById(position).style.display = "block";
+			setTimeout(function() { document.getElementById(position).style.opacity = 1; }, 100);			
+		}
+		function back() {
+			document.getElementById(position).style.display = "none";
+			setTimeout(function() { document.getElementById(position).style.opacity = 0; }, 100);
+			if (position > 1) { position-- }
+   			document.getElementById(position).style.display = "block";
+			setTimeout(function() { document.getElementById(position).style.opacity = 1; }, 100);
+
+		} 
+
+		document.onload(next());
+
+	</script>
+</body>
+</html>
