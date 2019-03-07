@@ -333,7 +333,7 @@
  	<section id="7">
 		<h1>Submission will open March 12th!</h1>
 		<h2>Keep decorating!!!</h2>
-
+		<img width="100%" src="https://cdn.shopify.com/s/files/1/0533/2089/files/partners_blog_progressive_enhancement_hero_e1db29d2-6a0e-4df9-8ed9-5888d27940e0.gif?v=1487161323">
 		<button class="left" onclick="fade(7,6)"></button>
 	
 	</section>
@@ -482,7 +482,8 @@
 		 		document.getElementById(position).style.display = "none";
 				setTimeout(function() { document.getElementById(position).style.opacity = 0; }, 100);	
 			}		
-		 	if (position < 7) { position++ };
+		 	if (position < 7) { position++ }
+		 		else { position = 1 };
 		 	document.getElementById(position).style.display = "block";
 			setTimeout(function() { document.getElementById(position).style.opacity = 1; }, 100);			
 		}
@@ -490,6 +491,7 @@
 			document.getElementById(position).style.display = "none";
 			setTimeout(function() { document.getElementById(position).style.opacity = 0; }, 100);
 			if (position > 1) { position-- }
+			 else { position = 7 }
    			document.getElementById(position).style.display = "block";
 			setTimeout(function() { document.getElementById(position).style.opacity = 1; }, 100);
 
